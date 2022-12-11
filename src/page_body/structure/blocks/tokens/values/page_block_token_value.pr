@@ -1,0 +1,31 @@
+{[ let token = context /]}
+<span class="token-value">
+{[ if token.tokenType.equals("Color") ]}
+    {{getFormattedColor(token.value)}}
+{[ elseif token.tokenType.equals("Blur") ]}
+    {[ switch token.value.type ]}
+        {[ case "Background" ]}
+            backdrop-filter: blur({{ token.value.radius.measure }}px)
+        {[ case "Layer" ]}
+            filter: blur({{ token.value.radius.measure }}px)
+    {[/]}
+{[ elseif token.tokenType.equals("Border") ]}
+    {{ token.value.width.measure }}px solid {{ getFormattedColor(token.value.color) }}
+{[ elseif token.tokenType.equals("Font") ]}
+    {{ token.value.family }} {{ token.value.subfamily }}
+{[ elseif token.tokenType.equals("Gradient") ]}
+    {{ gradientDescription(token) }}
+{[ elseif token.tokenType.equals("Measure")]}
+    {{ token.value.measure }}{{ measureTypeIntoReadableUnit(token.value.unit) }}
+{[ elseif token.tokenType.equals("Radius")]}
+    {{ token.value.radius.measure }}{{ measureTypeIntoReadableUnit(token.value.radius.unit) }}
+{[ elseif token.tokenType.equals("Shadow")]}
+    {{ shadowDescription(token) }}
+{[ elseif token.tokenType.equals("Text")]}
+    {{ token.value.text }}
+{[ elseif token.tokenType.equals("Typography") ]}
+    {{ typographyDescription(token)}}
+{[ elseif token.tokenType.equals("GenericToken")]}
+    {{ token.value.text }}
+{[/]}
+</span>

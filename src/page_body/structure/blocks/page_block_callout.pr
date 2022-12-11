@@ -1,0 +1,18 @@
+{* Fetch block from injection context, expected type 'Callout' *}
+{[ const block = context /]}
+{[ let calloutType = "info" /]}
+{[ let configuration = exportConfiguration() /]}
+
+{* Generate different types of heading. Note that even headings can have formatting, so we are using rich text formatter *}
+{[ switch block.calloutType ]}
+    {[ case "Info" ]}
+        {[ calloutType = "info" /]}
+    {[ case "Success" ]}
+        {[ calloutType = "success" /]}
+    {[ case "Warning" ]}
+        {[ calloutType = "warning" /]}
+    {[ case "Error" ]}
+        {[ calloutType = "danger" /]}
+{[/]}
+
+{[ inject "component_callout" context ({"type": calloutType, "text": block.text, "blockId": block.id }) /]}  

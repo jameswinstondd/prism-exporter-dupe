@@ -1,0 +1,116 @@
+/* =================================== */
+/*  Bottom Navigation
+/* =================================== */
+
+/* Theme */
+:root {
+  --pageNavigationBackground: var(--colorBackgroundPrimary);
+  --pageNavigationElevation: var(--boxShadowLevel1);
+  --pageNavigationInk: var(--colorInkPrimary);
+  --pageNavigationInkSection: var(--colorInkSecondary);
+  --pageNavigationHoverInk: var(--colorAccent); 
+  --pageNavigationInkHoverSection: var(--pageNavigationInkSection);
+  --pageNavigationHoverBackground: var(--pageNavigationBackground); 
+  --pageNavigationHoverElevation:  var(--boxShadowLevel2); 
+  --pageNavigationRadius: var(--borderRadiusLarge);
+}
+
+
+/* Styles */
+.page-bottom-navigation {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin: 40px 0 0 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  .segment {
+    padding: 12px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    box-shadow: var(--pageNavigationElevation);
+    border-radius: var(--pageNavigationRadius);
+    justify-content: space-between;
+    transition: var(--transitionDefault);
+    background: var(--pageNavigationBackground);
+    text-decoration: none;
+
+    * {
+      text-decoration: none;
+    }
+  
+    .segment-text {
+      width: 100%;
+  
+      > .section {
+        font-weight: var(--fontWeightSemibold);
+        color: var(--pageNavigationInk);
+        line-height: 1.3;
+        font-size: var(--fontSizeTiny);
+        opacity: 0.8;
+        margin-bottom: 2px;
+        transition: var(--transitionDefault);
+      }
+      
+      > .pagename {
+        font-weight: var(--fontWeightSemibold);
+        font-size: var(--fontSizeSmall);
+        line-height: 1.3;
+        color: var(--pageNavigationInk);
+        transition: var(--transitionDefault);
+      }
+    }
+
+    .arrow {
+      width: 20px;
+      height: 20px;
+      margin: 0px;
+      color: var(--pageNavigationInk);
+      transition: var(--transitionDefault);
+      opacity: 0.6;
+
+      svg {
+        display: block;
+        flex-shrink: 0;
+      }
+    }
+    
+
+    &:hover {
+      box-shadow: var(--pageNavigationHoverElevation);
+      background-color: var(--pageNavigationHoverBackground);
+      text-decoration: none;
+
+      * {
+        text-decoration: none;
+      }
+
+      .pagename,
+      .arrow,
+      .section {
+        color: var(--pageNavigationHoverInk);
+      }
+    }
+  }
+
+  .col.left {
+    padding-left: 0px;
+    text-align: right;
+  }
+  
+  .col-6 {
+    padding: 0px;
+  }
+  
+  .col.right {
+    padding-right: 0px;
+    text-align: left;
+  }
+}

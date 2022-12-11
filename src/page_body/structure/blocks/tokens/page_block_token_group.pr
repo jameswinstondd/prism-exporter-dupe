@@ -1,0 +1,13 @@
+{* Get block payload. We are fetching both block and group from context as we want to reuse this blueprint for different groups, not just the one defined inside block itself *}
+{[ const block = context.block /]}
+{[ const group = context.group /]}
+
+{[ let variant = block.variantKey /]}
+
+<div class="content-block content-block--token-group-container{{ getVariantClass(variant) }}">
+  {[ if (variant.contains("contrast-grid") && group.tokenType !== "Color") ]}
+    {[ inject "component_callout" context ({"type": "warning", "text": "<strong>Contrast grid variant is supported only for color tokens.</strong><br />Either pick a different block variant or change the token type.", "blockId": block.id }) /]}  
+  {[ else ]}
+    {[ inject "page_block_token_group_loop" context ({"block": block, "group": group }) /]}
+  {[/]}
+</div>

@@ -1,0 +1,9 @@
+{* Fetch block from injection context, expected type 'Text' *}
+{[ const block = context /]}
+
+{* Generate rich text *}
+{[ if (textBlockPlainText(block).count() === 0) ]}
+    <p>&nbsp;</p>
+{[ else ]}
+    <p id="{{ getSearchIDString(block.id) }}">{[ inject "page_block_rich_text" context block.text /]}</p>
+{[/]}

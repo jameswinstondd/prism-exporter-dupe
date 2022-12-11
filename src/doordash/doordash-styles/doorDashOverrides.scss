@@ -1,0 +1,542 @@
+/* Replace all hex codes with variables. */
+@font-face {
+  font-family: 'DD-TTNorms';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url('https://typography.doordash.com/TTNorms-Regular.woff2') format('woff2'),
+    url('https://typography.doordash.com/TTNorms-Regular.woff') format('woff'),
+    url('https://typography.doordash.com/TTNorms-Regular.ttf') format('truetype'),
+    url('https://typography.doordash.com/TTNorms-Regular.eot?#iefix') format('embedded-opentype');
+}
+
+@font-face {
+  font-family: 'DD-TTNorms';
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url('https://typography.doordash.com/TTNorms-Medium.woff2') format('woff2'),
+    url('https://typography.doordash.com/TTNorms-Medium.woff') format('woff'),
+    url('https://typography.doordash.com/TTNorms-Medium.ttf') format('truetype'),
+    url('https://typography.doordash.com/TTNorms-Medium.eot?#iefix') format('embedded-opentype');
+}
+
+:root {
+  /*  Palette 
+  /* =================================== */
+  --colorWhite: #fff;
+  --colorNeutral100: #f7f7f7;
+  --colorNeutral200: #e7e7e7;
+  --colorNeutral300: #d6d6d6;
+  --colorNeutral400: #c4c4c4;
+  --colorNeutral500: #b2b2b2;
+  --colorNeutral600: #9f9f9f;
+  --colorNeutral700: #767676;
+  --colorNeutral800: #494949;
+  --colorNeutral900: #191919;
+  --colorRed100: #ffe0db;
+  --colorRed500: #eb1700;
+  --colorRed700: #b71000;
+  --colorRed900: #810b00;
+  --colorGreen100: #f6fffa;
+  --colorGreen500: #1fa74f;
+  --colorGreen900: #006a25;
+  --colorOrange100: #ffffeb;
+  --colorOrange500: #f6e61b;
+  --colorOrange900: #d5a600;
+
+  /*  Core tokens 
+  /* =================================== */
+  --fontFamily: DD-TTNorms, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --borderRadiusSmall: 2px;
+  --borderRadiusDefault: 4px;
+  --borderRadiusLarge: 6px;
+  --transitionDefault: 200ms all ease-in-out;
+  --boxShadowLevel0: 0px 0px 0px 1px var(--colorBackgroundPrimary);
+  --boxShadowLevel1: 0px 4px 8px rgba(0, 0, 0, 0.05),
+    0px 0px 0px 1px var(--colorBackgroundSecondary);
+  --boxShadowLevel2: 0 4px 8px 0 rgb(0, 0, 0, 0.08),
+    0px 0px 0px 1px var(--colorBorderColorSubtle);
+
+  /*  Semantic 
+  /* =================================== */
+  /* main text */
+  --colorInkPrimary: --colorNeutral900;
+  /* secondary text */
+  --colorInkSecondary: var(--colorNeutral700);
+  /* eyebrow headings */
+  --colorInkTertiary: var(--colorNeutral500);
+  /* inverted text, e.g. for us on dark bg */
+  --colorInkInverted: var(--colorWhite);
+  /* Main bg for components */
+  --colorBackgroundPrimary: var(--colorWhite);
+  /* Secondary background (code, etc) ... */
+  --colorBackgroundSecondary: var(--colorNeutral100);
+  /* For hovers, etc., works on both Primary and Secondary ... */
+  --colorBackgroundAlt: var(--colorNeutral200);
+  /* inputs, s... */
+  --colorBorderColorProminent: var(--colorNeutral400);
+  /* borders, page structure ... */
+  --colorBorderColorSubtle: var(--colorNeutral200);
+  /* links, active states, ... */
+  --colorAccent: #EB1700;
+  /* hovers for primary */
+  --colorAccentDark: #FA7463;
+  /* Background for active items, e.g. in left nav or tabs */
+  --colorAccentSurface: #ecf4ff;
+  /* Ink color on accent */
+  --colorAccentInk: var(--colorWhite);
+  /* Inline code mark color */
+  --colorCodeMark: var(--colorRed700);
+
+  /* Site */
+  --pageBackground: var(--colorBackgroundPrimary);
+
+  /* Page Header */
+  --pageHeaderBackground: var(--colorBackgroundPrimary);
+  --pageHeaderInk: var(--colorInkPrimary);
+  --pageHeaderDescription: var(--colorInkSecondary);
+  --pageHeaderBorderColor: var(--colorBorderSubtle);
+
+  /* Top Navigation */
+  --topNavBackground: var(--colorBackgroundPrimary);
+  --topNavBorderColor: var(--colorBackgroundPrimary);
+  /* main header text and icons */
+  --topNavInk: var(--colorInkPrimary);
+  /* main header item text on hover  */
+  --topNavItemHoverInk: var(--topNavInk);
+  /* main header item text when active */
+  --topNavItemActiveInk: var(--topNavInk);
+  /* main header item background on hover */
+  --topNavItemHoverBackground: rgba(255, 255, 255, 0.15);
+  /* main header item background when active */
+  --topNavItemActiveBackground: var(--topNavItemHoverBackground);
+  --topNavHeaderHeight: 68px;
+  --topNavElevation: 0px 2px 8px rgba(0, 0, 0, 0.2);
+
+  /* Left Navigation */
+  --leftNavWidth: 300px;
+  --leftNavBackground: var(--colorBackgroundPrimary);
+  --leftNavBorderColor: var(--colorBorderColorSubtle);
+  --leftNavInk: var(--colorInkPrimary);
+  --leftNavItemHoverBackground: var(--colorBackgroundAlt);
+  --leftNavItemHoverBackgroundAlt: var(--colorNeutral300);
+  --leftNavItemHoverInk: var(--leftNavInk);
+  --leftNavItemActiveBackground: var(--colorAccentSurface);
+  --leftNavItemActiveInk: var(--colorAccent);
+  --leftNavInkTab: var(--colorInkSecondary);
+  --leftNavInkSection: var(--colorInkSecondary);
+  --leftNavElevation: none;
+
+  /* CTA button */
+  --ctaButtonBackground: var(--colorAccent);
+  --ctaButtonBackgroundHover: var(--colorAccentDark);
+  --ctaButtonInk: var(--colorWhite);
+
+  /* Blocks */
+  --spacingBlockAfter: 24px;
+
+  /* Block: Shortcuts */
+  --shortcutIconHeight: 48px;
+  --shortcutIconWidth: 48px;
+
+  /* Block: Heading */
+  --headingInk: var(--colorInkPrimary);
+
+  /* Block: Banner */
+  --calloutSuccessInk: var(--colorGreen900);
+  --calloutSuccessInkSecondary: var(--colorGreen500);
+  --calloutSuccessBackground: var(--colorGreen100);
+  --calloutWarningInk: var(--colorOrange900);
+  --calloutWarningInkSecondary: var(--colorOrange500);
+  --calloutWarningBackground: var(--colorOrange100);
+  --calloutDangerInk: var(--colorRed900);
+  --calloutDangerInkSecondary: var(--colorRed500);
+  --calloutDangerBackground: var(--colorRed100);
+  --calloutInfoInk: var(--colorInkPrimary);
+  --calloutInfoInkSecondary: var(--colorInkSecondary);
+  --calloutInfoBackground: var(--colorBackgroundAlt);
+}
+
+.page-bottom-navigation .segment-text .section {
+  color: #494949 !important;
+}
+
+.page-bottom-navigation .arrow svg,
+.page-bottom-navigation .segment-text .pagename {
+  color: #191919 !important;
+}
+
+
+
+/* Global */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-ligatures: no-common-ligatures;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+a,
+a:hover,
+a:focus {
+  color: #eb1700;
+}
+
+/* Header and Navigation */
+#header {
+  border-bottom: 0px;
+}
+
+.logo-wrapper img {
+  height: auto !important;
+}
+
+.btn-search.search.expanded {
+  color: rgb(25, 25, 25) !important;
+  background-color: rgb(231, 231, 231) !important;
+  box-shadow: rgb(231, 231, 231) 0px 0px 0px 2px !important;
+  border-radius: 1000px;
+  width: 200px !important;
+  padding: 0px 12px;
+}
+
+.btn-search.search.expanded:hover {
+  background-color: rgb(214, 214, 214) !important;
+  box-shadow: rgb(214, 214, 214) 0px 0px 0px 1px inset !important;
+  color: rgb(25, 25, 25) !important;
+}
+
+.btn-search.search:focus {
+  box-shadow: rgb(73, 105, 245) 0px 0px 0px 3px,
+  rgb(231, 231, 231) 0px 0px 0px 1px inset !important;    
+  outline: none !important;
+}
+
+.primary-menu ul.navbar-nav > li  {
+  position: relative;
+  height: 100%;
+}
+
+.nav-tabs .nav-item .nav-link,
+.nav-tabs .nav-item .nav-link.active,
+.nav-tabs .nav-item .nav-link:hover,
+.nav-tabs .nav-item .nav-link:hover span,
+.primary-menu ul.navbar-nav > li > a {
+  background-color: transparent !important;
+  color: var(--colorInkPrimary) !important;
+}
+
+.primary-menu ul.navbar-nav > li:first-child {
+  display: none !important;
+}
+
+.primary-menu ul.navbar-nav > li > a {
+  height: 100% !important;
+}
+
+.primary-menu ul.navbar-nav {
+  justify-content: center !important;
+}
+
+.nav-tabs .nav-item .nav-link.active:after,
+.nav-tabs .nav-item .nav-link:hover:after, 
+.primary-menu ul.navbar-nav > li > a:focus:after,
+.primary-menu ul.navbar-nav > li > a:hover:after,
+.primary-menu ul.navbar-nav > li > a.active:after {
+  width: 100%;
+  content: ' ';
+  background-color: var(--colorInkPrimary) !important;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  border-top-left-radius: var(--borderRadiusDefault);
+  border-top-right-radius: var(--borderRadiusDefault);
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  background-color: rgb(25, 25, 25) !important;
+  height: 4px;
+  bottom: 0px;
+  z-index: 9999999;
+}
+
+.container-title {
+  border-bottom: none !important;
+}
+
+/* Side Navigation */
+.nav-name {
+  border-bottom: none !important;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #494949;
+}
+
+.sidebar-navigation .nav li a.nav-link:hover,
+.sidebar-navigation .nav li a.nav-link:focus,
+.sidebar-navigation .nav li a.nav-link.active {
+  background-color: #F7F7F7 !important;
+  color: #191919 !important;
+  border-radius: 1000px !important;
+}
+
+.sidebar-navigation .nav li a.nav-link.active.group {
+  background-color: transparent !important;
+}
+
+/* Page Title / Hero Content */
+.container-title .subtitle {
+  color: #191919 !important;
+  font-weight: 500 !important;
+}
+
+.container-title {
+  min-height: auto !important;
+}
+
+
+.container-tabs, .no-container-tabs {
+  box-shadow: inset 0px -2px 0 0px var(--colorBorderSubtle);
+}
+
+.container-tabs, .no-container-tabs {
+  /* border-bottom: 2px solid #E7E7E7; */
+}
+
+.container-tabs > .tabbed-navigation {
+/* box-shadow: none; */
+
+}
+
+.tab-content.tab-content-block {
+  box-shadow: inset 0px 2px 0px 0px var(--colorBorderSubtle);
+}
+
+.nav.nav-tabs.nav-tabs-inline li {
+padding-left: 0px !important;
+}
+
+
+/* Quick Navivation In Page */
+#content-nav {
+  border-left: 2px solid var(--colorBorderSubtle) !important;
+}
+
+#content-nav ul li.active a {
+  color: #191919 !important;
+}
+
+#content-nav ul li a::before {
+  width: 2px !important;
+}
+
+#content-nav ul li.active a::before {
+  background-color: #191919 !important;
+  width: 2px !important;
+  left: -18px;
+  top: 0px;
+}
+
+#content-nav li.sub.active>a::before {
+  left: -30px;
+  top: -1px;
+}
+
+#content-nav li.sub-2.active>a::before {
+  left: -42px;
+  top: -1px;
+}
+
+
+/* Content Blocks */
+
+/* Inline Tabs */
+.tab-content.tab-content-block {
+  border: none !important;
+  border-radius: 0px !important;
+}
+
+.nav.nav-tabs.nav-tabs-inline {
+  margin-left: 0px;
+}
+
+/* Divider */
+.divider {
+  border-top: 1px solid var(#f7f7f7);
+}
+
+/* Banners */
+.content-block--callout {
+  font-size: 16px;
+  font-family: DD-TTNorms, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 500;
+  line-height: 22px;
+  color: #191919 !important;
+  background-color: #f7f7f7 !important;
+  border-radius: 8px;
+  gap: 16px;
+}
+
+.content-block--callout svg {
+  width: 24px;
+  height: 24px;
+}
+
+.callout-info .icon svg {
+  color: #191919 !important;  
+}
+
+.callout-success {
+  background-color: #e7fbef !important;
+}
+
+.callout-success .icon svg {
+ color:  #00872f !important;
+}
+
+.callout-warning {
+  background-color: #ffffa3 !important;
+}
+
+.callout-warning .icon svg {
+color:  #d5a600 !important;
+}
+
+.callout-danger {
+  background-color: #fff0ed !important;
+}
+
+.callout-danger .icon svg {
+  color: #b71000 !important;
+}
+
+
+/* Columns that enforce Options */
+.tabs-as-columns .frame-item .preview.frame {
+  background-image: none !important;
+}
+
+.tabs-as-columns .content-block--frames .frame-item {
+  padding-bottom: 0px !important;
+}
+
+.tabs-as-columns .frame-item .title, 
+.tabs-as-columns .frame-item .description {
+  display: none !important;
+}
+
+.nav.nav-pills {
+border-right: 1px solid #e7e7e7 !important; 
+padding-right: 16px !important;
+}
+
+.nav.nav-pills .nav-link:hover,
+.nav.nav-pills .nav-link:focus,  
+.nav.nav-pills .nav-link.active
+{
+ border-radius: 1000px !important;
+ border: none !important;
+ background-color: #F7F7F7 !important; 
+ color: #191919 !important;
+}
+
+.tab-pills .tab-content {
+ box-shadow: none !important;
+}
+
+
+/* =================================== */
+/*  Accordion
+/* =================================== */ 
+
+.accordion-section:first-child.accordion-header {
+  border-top: none !important; 
+}
+
+.accordion-section a.collapsed .accordion-header {
+  background-color: transparent;
+  color: #191919;
+  border-top: 1px solid var(--colorBorderSubtle);
+  border-bottom: 1px solid transparent;
+}
+
+.accordion-section a.collapsed .accordion-header:hover {
+  background-color: #f7f7f7;
+}
+
+.accordion-section a:not(.collapsed) .accordion-header {
+  background-color: #f7f7f7;
+  color: #191919;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.accordion-body {
+  background: #ffffff;
+}
+
+/* Table */
+
+table.data-table { 
+  border: none !important;
+}
+table.data-table tbody th,
+table.data-table tbody td {
+  padding: 16px !important;
+}
+
+
+table.data-table tbody th {
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+table.data-table:not(.borderless) tbody tr {
+  height: 48px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+table.data-table.header-row:not(.borderless) tbody tr:first-child {
+  border-bottom: 2px solid #e7e7e7;   
+}
+
+table.data-table tbody td {
+  border: none !important;
+}
+
+.content-block--shortcuts .shortcut-item {
+box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2) !important;
+}
+.content-block--shortcuts a .link,
+.content-block--shortcuts a .title {
+  color: #191919 !important;
+}
+
+.content-block--shortcuts a .title {
+font-weight: 700 !important;
+font-size: 16px !important;
+line-height: 24px !important;
+}
+
+.content-block--shortcuts a .description {
+  color: #191919 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+@media (min-width: 768px) {
+  .is-homepage .side-navigation-wrapper {
+      display: none !important;
+   } 
+}
+
+.is-homepage .container-title {
+  display: none;
+}

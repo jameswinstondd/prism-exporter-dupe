@@ -1,0 +1,34 @@
+/* =================================== */
+/*  Storybook embed
+/* =================================== */
+.storybook-container {
+  display: grid;
+}
+
+.storybook-error,
+.storybook-embed-container {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100;
+}
+
+.storybook-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid var(--colorBorderSubtle);
+  background-color: var(--colorBackgroundSecondary);
+  border-radius: var(--borderRadiusDefault);
+  visibility: hidden;
+  font-size: var(--fontSizeSmall);
+  font-weight: var(--fontWeightSemibold);
+  padding: 24px;
+}
+
+.storybook-embed-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--colorBorderSubtle);
+  border-radius: var(--borderRadiusDefault);
+}

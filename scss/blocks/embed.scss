@@ -1,0 +1,108 @@
+/* =================================== */
+/*  Embed
+/* =================================== */
+iframe {
+  display: block;
+  border: 0;
+}
+
+.content-block--embed {
+  width: 100%;
+
+  .embed-container {
+    width: 100%;
+    border: 1px solid var(--colorBorderSubtle);
+    border-radius: var(--borderRadiusDefault);
+    overflow: hidden;
+    transition: var(--transitionDefault);
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    div.preview {
+      min-height: 112px;
+      background-size: cover;
+    }
+
+    /* for actual link */
+    div.content {
+      padding: 16px;
+
+      p.title {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 20px;
+        color: var(--colorInkPrimary);
+        transition: var(--transitionDefault);
+      }
+
+      p.description {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 16px;
+        color: var(--colorInkSecondary);
+        /* Limit to max of 3 lines. */
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+      }
+
+      p.link {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 12px;
+        color: var(--colorInkSecondary);
+      }
+      
+    }
+
+    .embed-responsive-item {
+      width: 100%;
+      height: 100%;
+      border-radius: var(--borderRadiusDefault);
+    }
+    
+    .embed-responsive-16by9 {
+      &::before {
+        padding-top: 56.25%;
+      }
+    
+      &::before {
+        display: block;
+        content: "";
+      }
+    }
+  }
+}
+
+.embed-url div.content .embed-link {
+  text-decoration: none;
+
+  .embed-container {
+    border: 0;
+    box-shadow: var(--boxShadowLevel1);
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    p.title {
+      color: var(--colorAccent) !important;
+    }
+
+    .embed-container {
+      box-shadow: var(--boxShadowLevel2);
+    }
+
+    * {
+      text-decoration: none;
+    }
+  }
+}
