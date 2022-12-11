@@ -1002,7 +1002,7 @@
         },
         {
           "name": "Image w/ Padding (4 columns)",
-          "key": "icon-leading-1",
+          "key": "image-padding-4",
           "description": "Pads the thumbnail with a view more label.",
           "thumbnail": "thumbnails/imagePaddingThumbnail.png"
         }
