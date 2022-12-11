@@ -999,6 +999,12 @@
           "key": "icon-leading-1",
           "description": "One full-width item, with a large icon on the left.",
           "thumbnail": "thumbnails/Shortcuts_IconLeading-1.png"
+        },
+        {
+          "name": "Image w/ Padding (4 columns)",
+          "key": "icon-leading-1",
+          "description": "Pads the thumbnail with a view more label.",
+          "thumbnail": "thumbnails/imagePaddingThumbnail.png"
         }
       ],
       "FigmaFrames": [
