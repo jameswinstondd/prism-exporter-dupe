@@ -1,0 +1,54 @@
+{[ const shortcut = context /]}
+
+{[ if !shortcut.title.startsWith("_") ]} 
+    {[ if shortcut.externalUrl ]}
+        <a href="{{ shortcut.externalUrl }}" class="shortcut-item" target="_blank">
+    {[ elseif shortcut.internalId ]}
+            {* Note that internal id can link to both group and page. Test if this links to page first and if so, make link to it *}
+            {[ let page = ds.documentationPageById(shortcut.internalId) /]}
+            {[ if page ]}
+                {[ if isExportable(page) ]}
+                    {[ let url = pageUrl(page, ds.documentationDomain()) /]}
+                    <a href="{{ url }}" class="shortcut-item">
+                {[ else ]}      
+                    <a class="shortcut-item">            
+                {[/]}
+            {[ else ]}
+            {* Links to group instead, find that and if exists, link to the first page in that group *}
+                {[ let group = ds.documentationGroupById(shortcut.internalId) /]}
+                {[ if group ]}
+                    {[ page = firstPageFromTop(group) /]}
+                    {[ if page ]}
+                        {[ if isExportable(page) ]}
+                            {[ let url = pageUrl(page, ds.documentationDomain()) /]}
+                            <a href="{{ url }}" class="shortcut-item">
+                        {[ else ]}
+                            <a class="shortcut-item">
+                        {[/]}
+                    {[ else ]}
+                    {* Doesn't link to anything *}
+                        <a class="shortcut-item">
+                    {[/]}
+                {[ else ]}
+                {* Doesn't link to anything *}
+                <a class="shortcut-item">
+                {[/]}
+            {[/]}
+    {[ else ]}
+        <a class="shortcut-item"> 
+    {[/]}
+
+        {[ if shortcut.previewUrl ]}
+        <img src="{{shortcut.previewUrl }}" />
+        {[ else ]}
+        <div class="preview empty"></div>
+        {[/]}
+        <div class="content">
+            <p class="title">{{ withHTMLNewlines(shortcut.title) }}</p>
+            {[ if (shortcut.description && shortcut.description != "-") ]}
+                <p class="description">{{ withHTMLNewlines(shortcut.description) }}</p>    
+            {[/]}
+            <p class="cta">View More {[ inject "doordash_icon_arrow" context null /]}</p>
+        </div>
+    </a>
+{[/]}
