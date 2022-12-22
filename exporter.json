@@ -6,7 +6,7 @@
   "organization": "Supernova",
   "source_dir": "src",
   "assets_dir": "assets",
-  "version": "4.2.3",
+  "version": "4.2.4",
   "usesBrands": false,
   "config": {
     "sources": "sources.json",
@@ -715,28 +715,28 @@
         "mode": "block",
         "properties": [
           {
-            "key": "pageTitle",
+            "key": "primaryText",
             "default": "",
             "type": "string",
-            "label": "Homepage Title"
+            "label": "Primary Text"
+          },
+          {
+            "key": "secondaryText",
+            "default": "",
+            "type": "string",
+            "label": "Secondary Text"
+          },
+          {
+            "key": "tertiaryText",
+            "default": "",
+            "type": "string",
+            "label": "Tertiary Text"
           },
           {
             "key": "jsonURL",
             "default": "",
             "type": "string",
             "label": "Lottie JSON URL"
-          },
-          {
-            "key": "width",
-            "type": "number",
-            "default": 480,
-            "label": "Lottie Width (px)"
-          },
-          {
-            "key": "height",
-            "type": "number",
-            "default": 270,
-            "label": "Lottie Height (px)"
           }
         ]
       },

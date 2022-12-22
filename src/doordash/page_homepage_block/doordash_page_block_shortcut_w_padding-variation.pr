@@ -48,7 +48,6 @@
             {[ if (shortcut.description && shortcut.description != "-") ]}
                 <p class="description">{{ withHTMLNewlines(shortcut.description) }}</p>    
             {[/]}
-            <p class="cta">View More {[ inject "doordash_icon_arrow" context null /]}</p>
         </div>
     </a>
 {[/]}

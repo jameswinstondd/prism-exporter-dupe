@@ -1,0 +1,124 @@
+{* Fetch the page structure *}
+{[ let rootGroup = [] /]}
+{[ let page = context.page /]}
+{[ let configuration = exportConfiguration() /]}
+{[ let isRootForTab = false /]}
+{[ let hasFirstLevelFlat = configuration.navigationFirstLevelExpanded /]}
+{[ let showTabs = configuration.navigationShowTabs /]}
+{[ let showSectionLabel = configuration.navigationShowSectionLabel /]}
+{[ let shouldShowTabbar = ds.documentationConfiguration().settings.tabbedNavigation /]}
+{[ let documentationRoot = ds.rootDocumentationGroup() /]}
+
+
+    {[ rootGroup = documentationRoot /]}
+    {[ isRootForTab = true /]}
+
+<div class="zeynep">
+    <div class='doordash-top-nav'>
+        <button class='btn-close toggle-navbar'>{[ inject "doordash_icon_x" context configuration /]}</button>
+    </div>
+    <div class="side-navigation-wrapper {{ ((configuration.sideNavigationStyle === "Dark") ? "style-dark" : "style-light")}}" id="side-navigation">
+        <div class="sidebar-navigation docs-navigation">
+            {[ if rootGroup ]}
+                {* If we pass page object, it means we are generating from root. However, our root is actually not the main root, but rather one object below it - and we want to show its name as header of the category as well as all its children *}
+                <ul class="nav{{ !shouldShowTabbar ? " with-root-level" : ""}}{{ hasFirstLevelFlat ? " first-level-flat" : ""}}">
+                    {[ for item in rootGroup.children ]}
+                        {* Only show items that are exportable *}
+                        {[ if isExportable(item) ]}
+                            {[ let isActive = pageOrGroupActiveInContext(page, item) /]}
+                            {[ let activeClass = (isActive === true ? " active" : "") /]}
+                            {[ let isTab = (item.parent.groupBehavior === "Tabs" ? true : false) /]}
+                            {[ let itemId = item.id /]}
+                            {[ let showTabsInNavigation = ((item.groupBehavior !== "Tabs") || (showTabs && item.groupBehavior === "Tabs")) /]}
+                            {[ let itemTitle = resolveMenuLabel(item, documentationRoot, configuration.navigationOverrideHomepageLabel) /]}
+                            {[ let isGroupOpen = (isRootForTab && hasFirstLevelFlat && (item.groupBehavior !== "Tabs")) /]}
+                            {[ let activeMenuClass = (pageOrGroupActiveInContext(page, item) === true ? "current opened" : "") /]}
+
+                            {[ if item.type.equals("Page") ]}
+                                <li class="nav-item{{ isTab === true ? " is-tab" : "" }}"><a class="nav-link" href="{{ pageUrl(item, ds.documentationDomain()) }}">{{ itemTitle }}</a></li>
+                            {[ else ]}
+                                <li class="nav-item{{ (isGroupOpen ? " group-open"  : "") }}">
+                                {[ let firstDescendingPage = firstPageFromTop(item) /]}
+                                {* Group will either link to the first page, or be fully disabled *}
+                                {[ if firstDescendingPage ]}
+                                    <a 
+                                        class="nav-link{{ (showTabsInNavigation ? " group"  : "") }}"
+                                        href="{{ ((item.type === "Group") ? "#" : pageUrl(item, ds.documentationDomain()))}}"
+                                        {[ if item.type === "Group" ]}
+                                            data-submenu="{{item.slug}}-submenu"
+                                        {[/]}
+                                    >
+                                        {{ itemTitle }}
+                                        {[ if showTabsInNavigation ]}<span class="icon doordash-icon">{[ inject "doordash_icon_arrow_right" context configuration /]}</span>{[/]}
+                                    </a>
+                                {[ else ]}  
+                                    <a class="nav-link group {{ activeClass }}">{{ itemTitle }}</a>
+                                {[/]}
+                                {[ if item.type === "Group" ]}
+                                    <div id="{{item.slug}}-submenu" class="submenu {{activeMenuClass}}">
+                                    <a href="#" class='nav-link doordash-main-menu-link' data-submenu-close="{{item.slug}}-submenu"><span class="icon doordash-icon-left">{[ inject "doordash_icon_arrow_left" context configuration /]}</span> Main Menu</a>
+                                    {[ let data = { "page": page, "groupId": itemId } /]}
+                                    {[ inject "page_body_structure_sidebar" context data /]}
+                                    </div>
+                                {[/]}
+                                </li>
+                            {[/]}
+                        {[/]}
+                    {[/]}
+                </ul>
+            {[/]}
+        </div>
+    </div>
+</div>
+
+
+{*
+{[ let page = context /]}
+{[ let group = page.parent /]}
+{[ let groupIsTabContainer = (group.groupBehavior === "Tabs") /]}
+{[ let pageConfiguration = (groupIsTabContainer ? group.configuration : page.configuration) /]}
+{[ let domain = ds.documentationDomain() /]}
+{[ let configuration = exportConfiguration() /]}
+{[ let shouldShowTabbar = ds.documentationConfiguration().settings.tabbedNavigation /]}
+{[ let designSystem = ds.documentationConfiguration().version.designSystem /]}
+{[ let rootGroup = ds.rootDocumentationGroup() /]}
+
+<div class="zeynep">
+    <div class="side-navigation-wrapper {{ ((configuration.sideNavigationStyle === "Dark") ? "style-dark" : "style-light")}}" id="side-navigation">
+        <div class="sidebar-navigation docs-navigation">
+            <ul class="nav">
+                {[ if shouldShowTabbar ]}
+                    {[ for item in rootGroup.children ]}
+                        {[ if isExportable(item) ]}
+                            {[ let activeClass = (pageOrGroupActiveInContext(page, item) === true ? "active" : "") /]}
+                            {[ let activeMenuClass = (pageOrGroupActiveInContext(page, item) === true ? "current opened" : "") /]}
+                            {[ let itemTitle = resolveMenuLabel(item, rootGroup, configuration.navigationOverrideHomepageLabel) /]}
+                        
+                            <li class='nav-item {{ ((configuration.sideNavigationStyle === "Dark") ? "style-dark" : "style-light")}} {{ ((item.type === "Group") ? "has-submenu" : "")}}'>
+                                <a 
+                                    class="nav-link {{activeClass}}" 
+                                    href="{{ ((item.type === "Group") ? "#" : pageUrl(item, ds.documentationDomain()))}}"
+                                    {[ if item.type === "Group" ]}
+                                        data-submenu="{{item.slug}}-submenu"
+                                    {[/]}
+                                >
+                                    {[ if item.type === "Group" ]}
+                                        {{ itemTitle }} {[ inject "icon_arrow_right" context configuration /]}
+                                    {[/]}
+                                </a>
+                                {[ if item.type === "Group" ]}
+                                    <div id="{{item.slug}}-submenu" class="submenu {{activeMenuClass}}">
+                                       Need Current Page Information 
+                                       and
+                                       All Pages in the Group
+                                    </div>
+                                {[/]}
+                            </li>
+                        {[/]}
+                    {[/]} 
+                {[/]}
+            </ul>
+        </div>
+    </div>
+</div>
+*}

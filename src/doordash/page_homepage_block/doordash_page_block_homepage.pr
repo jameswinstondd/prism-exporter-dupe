@@ -6,15 +6,15 @@
 <div class="dd-homepage-hero-wrapper">
     
     <div class="dd-homepage-hero-section">
-        <h1>Prism<br />Design System</h1>
+        <h1>Prism <span>Design System</span></h1>
         <div class='dd-homepage-animation'>
         {* Render lottie file block from configuration *}
         {[ if !configuration.contentIncludeLottiePlayer ]}
             Warning: Lottie Player isn't enabled in documentation. To fix this, go to Settings / Other section, enable Include Lottie player</> option, and re-publish documentation.
         {[ elseif (url && extension == 'json') ]}
-        <lottie-player src="{{ url }}" background="transparent" speed="1" style="width: {{ block.properties.width }}px; height: {{ block.properties.height }}px;" loop autoplay ></lottie-player>
+        <lottie-player src="{{ url }}" background="transparent" speed="1" loop autoplay ></lottie-player>
         {[ elseif (url && extension == 'lottie') ]}
-        <dotlottie-player src="{{ url }}" background="transparent" speed="1" style="width: {{ block.properties.width }}px; height: {{ block.properties.height }}px;" loop autoplay></dotlottie-player>
+        <dotlottie-player src="{{ url }}" background="transparent" speed="1" loop autoplay></dotlottie-player>
         {[ else ]}
         Error: Unable to render animation.
         {[/]}

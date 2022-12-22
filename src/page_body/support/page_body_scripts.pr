@@ -30,6 +30,8 @@
 <script src="{{ assetUrl("dist/docs.min.js", domain)}}"></script>
 <script src="{{ assetUrl("js/functionality.js", domain)}}"></script>
 <script src="{{ assetUrl("js/cookie-consent.js", domain)}}"></script>
+<script src="{{ assetUrl("js/doordash-sidesheet.js", domain)}}"></script>
+<script src="{{ assetUrl("js/doordash-sidesheet-init.js", domain)}}"></script>
 
 <!-- After loading -->
 <script>

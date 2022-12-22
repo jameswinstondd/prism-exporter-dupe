@@ -35,12 +35,18 @@
   <!-- Content -->
   <div id="content" role="main" class="site-wrapper{{ (globalConfiguration.topNavHideCompletely ? " hidden-top-nav" : "") }}">
   
+    
+    {[ inject "doordash_page_body_structure_header" context page /]}
+
+    {[ inject "page_body_structure_header_mobile_menu" context { "page": page } /]}
+
     {* Add content header - if not disabled *}
-    {[ if (!globalConfiguration.topNavHideCompletely) ]}
+    {* DoorDash: We override this here to get around config issues. We don't touch this code to clear up fork / merge conflict issues. *}
+    {[ if (!globalConfiguration.topNavHideCompletely && globalConfiguration.topNavHideCompletely) ]}
       {[ inject "page_body_structure_header" context page /]}
     {[ else ]}
       {* We need this for mobile view, hidden on desktop *}
-      <header id="header" class="mobile-header sticky-top {{ ((globalConfiguration.topNavigationStyle === "Dark") ? "style-dark" : "style-light")}}">    
+      {*<header id="header" class="mobile-header sticky-top {{ ((globalConfiguration.topNavigationStyle === "Dark") ? "style-dark" : "style-light")}}">    
           <!-- Navbar -->
           <nav class="primary-menu navbar navbar-expand-lg">
                   <button id="sidebarCollapse" class="toggle-navbar" type="button">
@@ -48,7 +54,7 @@
                   </button>
               {[/]}
           </nav>
-      </header>
+      </header>*}
     {[/]}
 
     <div class="site">
