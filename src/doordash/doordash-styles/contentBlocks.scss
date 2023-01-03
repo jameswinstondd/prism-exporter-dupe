@@ -1,0 +1,290 @@
+/* =================================== */
+/*  Bottom Page Navigation
+/* =================================== */
+.page-bottom-navigation .segment-text .section {
+    color: #494949 !important;
+}
+  
+.page-bottom-navigation .arrow svg,
+.page-bottom-navigation .segment-text .pagename {
+    color: #191919 !important;
+}
+
+/* =================================== */
+/*  Inline Content Tabs
+/* =================================== */
+.tab-content.tab-content-block {
+  border: none !important;
+  border-radius: 0px !important;
+}
+
+.nav.nav-tabs.nav-tabs-inline {
+  margin-left: 0px;
+}
+
+.nav-tabs .nav-item .nav-link,
+.nav-tabs .nav-item .nav-link.active,
+.nav-tabs .nav-item .nav-link:hover,
+.nav-tabs .nav-item .nav-link:hover span {
+  background-color: transparent !important;
+  color: var(--colorInkPrimary) !important;
+}
+
+.nav-tabs .nav-item .nav-link.active:after,
+.nav-tabs .nav-item .nav-link:hover:after {
+  width: 100%;
+  content: ' ';
+  background-color: var(--colorInkPrimary) !important;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  border-top-left-radius: var(--borderRadiusDefault);
+  border-top-right-radius: var(--borderRadiusDefault);
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  background-color: rgb(25, 25, 25) !important;
+  height: 4px;
+  bottom: 0px;
+  z-index: 9999999;
+}
+
+.nav-tabs .nav-item .nav-link {
+  height: 48px !important;
+}
+
+.nav-tabs .nav-item .nav-link.active, 
+.nav-tabs .nav-item .nav-link:hover {
+
+  font-weight: 700 !important;
+}
+
+.nav-tabs .nav-item .nav-link {
+  height: 48px !important;
+  border: 1px solid transparent;
+}
+
+.nav-tabs .nav-item .nav-link.active, 
+.nav-tabs .nav-item .nav-link:hover {
+  font-weight: 700 !important;
+}
+
+
+.nav-tabs .nav-item .nav-link:hover a:after {
+  display: none;
+} 
+
+
+.nav.nav-pills {
+  border-right: 1px solid #e7e7e7 !important; 
+  padding-right: 16px !important;
+}
+  
+.nav.nav-pills .nav-link:hover,
+.nav.nav-pills .nav-link:focus,  
+.nav.nav-pills .nav-link.active
+{
+  border-radius: 1000px !important;
+  border: none !important;
+  background-color: #F7F7F7 !important; 
+  color: #191919 !important;
+}
+
+.tab-pills .tab-content {
+  box-shadow: none !important;
+}
+  
+/* =================================== */
+/*  Divider
+/* =================================== */
+.divider {
+  border-top: 1px solid var(#f7f7f7);
+}
+
+/* =================================== */
+/*  Banner
+/* =================================== */
+.content-block--callout {
+  font-size: 16px;
+  font-family: DD-TTNorms, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 500;
+  line-height: 22px;
+  color: #191919 !important;
+  background-color: #f7f7f7 !important;
+  border-radius: 8px;
+  gap: 16px;
+}
+
+.content-block--callout svg {
+  width: 24px;
+  height: 24px;
+}
+
+.callout-info .icon svg {
+  color: #191919 !important;  
+}
+
+.callout-success {
+  background-color: #e7fbef !important;
+}
+
+.callout-success .icon svg {
+  color:  #00872f !important;
+}
+
+.callout-warning {
+  background-color: #ffffa3 !important;
+}
+
+.callout-warning .icon svg {
+color:  #d5a600 !important;
+}
+
+.callout-danger {
+  background-color: #fff0ed !important;
+}
+
+.callout-danger .icon svg {
+  color: #b71000 !important;
+}
+
+
+/* =================================== */
+/*  Figma Frame / Side by Side in Columns
+/* =================================== */
+.tabs-as-columns .frame-item .preview.frame {
+  background-image: none !important;
+}
+
+.tabs-as-columns .content-block--frames .frame-item {
+  padding-bottom: 0px !important;
+}
+
+.tabs-as-columns .frame-item .title, 
+.tabs-as-columns .frame-item .description {
+  display: none !important;
+}
+
+/* =================================== */
+/*  Accordion
+/* =================================== */ 
+.accordion-section:first-child.accordion-header {
+  border-top: none !important; 
+}
+
+.accordion-section a.collapsed .accordion-header {
+  background-color: transparent;
+  color: #191919;
+  border-top: 1px solid var(--colorBorderSubtle);
+  border-bottom: 1px solid transparent;
+}
+
+.accordion-section a.collapsed .accordion-header:hover {
+  background-color: #f7f7f7;
+}
+
+.accordion-section a:not(.collapsed) .accordion-header {
+  background-color: #f7f7f7;
+  color: #191919;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.accordion-body {
+  background: #ffffff;
+}
+
+/* =================================== */
+/*  Table
+/* =================================== */ 
+table.data-table { 
+  border: none !important;
+}
+
+table.data-table tbody th,
+table.data-table tbody td {
+  padding: 16px !important;
+}
+
+table.data-table tbody th {
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+table.data-table:not(.borderless) tbody tr {
+  height: 48px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+table.data-table.header-row:not(.borderless) tbody tr:first-child {
+  border-bottom: 2px solid #e7e7e7;   
+}
+
+table.data-table tbody td {
+  border: none !important;
+}
+
+/* =================================== */
+/*  Shortcuts
+/* =================================== */ 
+.content-block--shortcuts a .title {
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  line-height: 24px !important;
+}
+
+.content-block--shortcuts a .description {
+  color: #767676 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+.shortcut-item .title {
+  color: #191919 !important;
+} 
+
+.content-block--shortcuts .shortcut-item {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 16px !important;
+}
+
+.content-block--shortcuts .shortcut-item:active,
+.content-block--shortcuts .shortcut-item:focus,
+.content-block--shortcuts .shortcut-item:hover {
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+
+/* =================================== */
+/*  Custom Shortcut Variant: Image w/ padding in 4 columns
+/* =================================== */ 
+.content-block.content-block--shortcuts.variant-image-padding-4 img {
+  margin: auto 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.content-block.content-block--shortcuts.variant-image-padding-4 a {
+  padding: 16px !important;
+  border-radius: 16px !important;
+}
+
+.content-block.content-block--shortcuts.variant-image-padding-4 a .content {
+  padding: 0px !important;
+}
+
+
+.content-block.content-block--shortcuts.variant-image-padding-4 a .title {
+  font-size: 20px !important;
+  font-weight: 700;
+}
+
+.content-block.content-block--shortcuts.variant-image-padding-4 a .description {
+  font-size: 16px !important;
+  font-weight: 500;
+}

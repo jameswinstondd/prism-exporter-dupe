@@ -1,0 +1,166 @@
+.zeynep {
+  bottom: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transform: translateX(-100%) translateZ(0px);
+  z-index: 1011;
+  box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.2);
+  display: none !important;
+}
+
+.zeynep:not(.no-transition),
+.zeynep .submenu:not(.no-transition) {
+  transition: all 250ms;
+}
+
+.zeynep-overlay {
+  background-color: rgba(0, 0, 0, 0.42);
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1010;
+}
+
+.zeynep-opened .zeynep-overlay {
+  display: block;
+}
+
+.zeynep.opened {
+  pointer-events: auto;
+  transform: translateX(0px) translateZ(0px);
+}
+
+.zeynep.submenu-opened {
+  overflow: hidden;
+}
+
+.zeynep .submenu {
+  bottom: 0;
+  min-height: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  pointer-events: none;
+  position: fixed;
+  top: var(--topNavHeight);
+  width: 100%;
+}
+
+.zeynep .submenu.opened {
+  left: 0;
+  pointer-events: auto;
+}
+
+.zeynep .submenu.opened:not(.current) {
+  overflow: hidden;
+}
+
+.zeynep {
+  background-color: #ffffff;
+  width: 320px;
+}
+
+.zeynep ul.nav {
+  -webkit-overflow-scrolling: touch;
+  display: block;
+}
+
+.zeynep ul > li > a {
+  transition: all 150ms;
+  cursor: pointer;
+  font-size: 16px !important;
+}
+
+.zeynep .submenu {
+  left: 320px;
+  background-color: #ffffff;
+  z-index: 999;
+  padding: 8px;
+}
+
+.zeynep .submenu-header > a {
+  color: inherit;
+  display: block;
+}
+
+.zeynep .side-navigation-wrapper {
+  display: flex !important;
+  position: relative;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin: 0px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-shadow: none !important;
+  border: none;
+}
+
+.zeynep .submenu.opened .side-navigation-wrapper .nav {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.side-navigation-wrapper .sidebar-navigation {
+  box-shadow: none;
+}
+
+.zeynep .icon.doordash-icon {
+  color: #191919 !important;
+  transform: none !important;
+}
+
+.zeynep .icon.doordash-icon svg {
+  height: 24px !important;
+  width: 24px !important;
+}
+
+.zeynep .icon.doordash-icon svg path {
+  fill: #191919 !important;
+}
+
+.zeynep .doordash-main-menu-link {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  font-size: 16px !important;
+}
+
+.zeynep .doordash-main-menu-link .icon {
+  margin-right: 16px;
+  margin-top: -3px;
+}
+
+.zeynep .doordash-top-nav {
+  height: var(--topNavHeight);
+  display: flex;
+  align-items: center;
+}
+
+.zeynep .doordash-top-nav .toggle-navbar {
+  margin-left: 16px !important;
+}
+
+.zeynep .doordash-top-nav svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+@media (max-width: 992px) {
+  .is-homepage #side-navigation {
+    display: none !important;
+  }
+  .zeynep {
+    display: block !important;
+  }
+  .zeynep #side-navigation {
+    display: flex !important;
+  }
+}

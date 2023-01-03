@@ -1,0 +1,116 @@
+/* =================================== */
+/*  Header Wrapper
+/* =================================== */ 
+#header {
+    border-bottom: 0px;
+}
+  
+/* =================================== */
+/*  Logo
+/* =================================== */ 
+.logo-wrapper img {
+  height: auto !important;
+}
+
+/* =================================== */
+/* Primary Menu
+/* =================================== */ 
+.primary-menu ul.navbar-nav > li:first-child {
+  display: none !important;
+}
+
+.primary-menu .navbar-nav {
+  justify-content: flex-end;
+  margin-right: 16px !important;
+}
+
+.primary-menu ul.navbar-nav>li>a:not(.btn) { 
+  border-radius: 1000px;
+  font-size: 16px !important;
+}
+
+.primary-menu ul.navbar-nav>li>a.active:not(.btn),
+.primary-menu ul.navbar-nav>li:hover>a:not(.btn) {
+  background-color: #f7f7f7 !important;
+  color: #191919;
+}
+
+/* =================================== */
+/*  Mobile Menu Toggle
+/* =================================== */ 
+.toggle-navbar {
+  display: none !important;
+  border-radius: 1000px;
+}
+
+.toggle-navbar:hover,
+.toggle-navbar:focus,
+.toggle-navbar:active {
+  background-color: #F7F7F7 !important;
+  color: #191919 !important;
+}
+
+/* =================================== */
+/*  Search Trigger
+/* =================================== */ 
+.btn-search.search:focus {
+  box-shadow: rgb(73, 105, 245) 0px 0px 0px 3px,
+  rgb(231, 231, 231) 0px 0px 0px 1px inset !important;    
+  outline: none !important;
+}
+
+.btn-search:hover,
+.btn-search:focus,
+.btn-search:active {
+  background-color: #F7F7F7 !important;
+  color: #191919 !important;
+}
+
+.btn-search {
+  width: 38px !important;
+  height: 38px !important;
+  background-color: #f7f7f7 !important;
+  border-radius: 1000px;
+}
+
+.btn-search:hover {
+  background-color: #e7e7e7 !important;
+}
+
+.btn-search svg {
+  width: 24px;
+  height: 24px;
+}
+  
+@media (max-width: 992px) {
+  .primary-menu .toggle-navbar {
+    order: -1;
+    margin-left: 16px !important;
+    margin-right: 8px !important;
+  }
+
+  .primary-menu {
+    justify-content: flex-start;
+  }
+
+  .site-logo {
+    display: block !important;
+  }
+
+  .logo-wrapper {
+    padding: 0px !important;
+  }
+
+  .btn-search {
+    margin-left: auto;
+    display: flex;
+  }
+
+  .logo-wrapper img {
+    max-height: 32px;
+  }
+  
+  .toggle-navbar {
+    display: flex !important;
+  }
+}
