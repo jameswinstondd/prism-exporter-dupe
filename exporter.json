@@ -760,6 +760,54 @@
             "label": "Date of update"
           }
         ]
+      },
+      {
+        "key": "io.supernova.documentation-main.component-quick-links",
+        "category": "DoorDash Blocks",
+        "title": "Component Quick Links",
+        "description": "Add Quick links based on Component Table to the top of the page.",
+        "icon": "icons/custom-block-link-external.png",
+        "mode": "block",
+        "properties": [
+          {
+            "key": "componentId",
+            "type": "component",
+            "label": "Component"
+          },
+          {
+            "key": "propertiesToHighlight",
+            "type": "componentProperties",
+            "label": "Properties"
+          }
+        ]
+      },
+      {
+        "key": "io.supernova.documentation-main.quick-links",
+        "category": "DoorDash Blocks",
+        "title": "Quick Links",
+        "description": "Add Quick links based to the top of the page.",
+        "icon": "icons/custom-block-link-external.png",
+        "mode": "block",
+        "properties": [
+          {
+            "key": "label",
+            "default": "",
+            "type": "string",
+            "label": "Link Label"
+          },
+          {
+            "key": "url",
+            "default": "",
+            "type": "string",
+            "label": "URL"
+          },
+          {
+            "key": "icon",
+            "default": "external",
+            "type": "string",
+            "label": "URL"
+          }
+        ]
       }
     ],
     "blockVariants": {
